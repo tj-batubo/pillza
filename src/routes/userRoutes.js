@@ -4,16 +4,9 @@ import validateUser from '../middlewares/inputValidator.js';
 
 const router = express.Router();
 
-// //  Signup Route
-// router.post("signup", CreataUser);
-
-// // Login Route
-// router.post("login", loginUser);
-
-router.post("/user", validateUser, createUser);
-router.get("/user", getAllUsers);
-router.get("/user/:id", getUserById);
-router.put("/user/:id",validateUser, updateUser);
-router.delete("/user/:id", deleteUser);
+router.get("/", getAllUsers);
+router.get("/:id", getUserById);
+router.put("/:id", updateUser);
+router.delete("/:id", deleteUser);
 
 export default router;

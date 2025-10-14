@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import pool from './config/db.js';
 
 import userRoutes from "./routes/userRoutes.js";
+import userEntry from "./routes/userEntry.js";
 import createUserTable from "./data/createUserTable.js";
 
 dotenv.config();
@@ -17,7 +18,8 @@ app.use(    express.json()  );
 app.use(    cors()    );
 
 //  Routes
-app.use("/api", userRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api", userEntry);
 
 
 //  Error Handling middleware
@@ -27,24 +29,24 @@ app.use(    errorHandler    );
 createUserTable();
 
 // Testing POSTGRES Connection
-app.get("/", async(req, res) => {
-    console.log("\nStart...");
+// app.get("/", async(req, res) => {
+//     console.log("\nStart...");
 
-    try {
+//     try {
 
-        const result = await pool.query("SELECT current_database()");
-        res.status(200).send(`The database name is: ${result.rows[0].current_database}`);
+//         const result = await pool.query("SELECT current_database()");
+//         res.status(200).send(`The database name is: ${result.rows[0].current_database}`);
 
-    } catch (err) {
+//     } catch (err) {
 
-        next(err);
+//         next(err);
 
-    } finally {
+//     } finally {
 
-        console.log("...End\n");
+//         console.log("...End\n");
 
-    }
-})
+//     }
+// })
 
 //  Server Running
 app.listen(port, () => console.log(`Server Running on http:localhost:${port}`))
