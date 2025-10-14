@@ -1,16 +1,19 @@
 import express from 'express';
+import { createUser, deleteUser, getAllUsers, getUserById, updateUser } from '../controllers/userController.js';
+import validateUser from '../middlewares/inputValidator.js';
 
 const router = express.Router();
 
-//  Signup Route
-router.post("signup", CreataUser);
+// //  Signup Route
+// router.post("signup", CreataUser);
 
-// Login Route
-router.post("login", loginUser);
+// // Login Route
+// router.post("login", loginUser);
 
+router.post("/user", validateUser, createUser);
 router.get("/user", getAllUsers);
 router.get("/user/:id", getUserById);
-router.put("/user/:id", updateUser);
+router.put("/user/:id",validateUser, updateUser);
 router.delete("/user/:id", deleteUser);
 
 export default router;

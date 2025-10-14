@@ -1,6 +1,5 @@
+## Node Fils
 node_modules/
 
+## Environment variables
 .env
-
-./index.js
-./db.js
