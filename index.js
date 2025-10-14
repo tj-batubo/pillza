@@ -15,13 +15,7 @@ app.get("/", (req, res) => {
   res.status(200).send("API is running...");
 });
 
-// Get all users
-app.get("/users", async (req, res) => {
 
-    const result = await pool.query("SELECT * FROM users");
-    res.json(result.rows);
-    
-});
 
 // Add a new user
 app.post("/users", async (req, res) => {
