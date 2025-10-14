@@ -1,4 +1,6 @@
-test/
 node_modules/
 
 .env
+
+./index.js
+./db.js
